@@ -1,4 +1,4 @@
-(defun timer (tiempo)
+(defun calTimer (tiempo)
   (let ((rValor 90)
         (vValor 120)
         (aValor 6))
@@ -12,7 +12,12 @@
 )
 
 (defun comparar(resto) 
-    
+    (cond
+        ((< resto 90) 'en-rojo)
+        ((< resto 96) 'en-amarillo)
+        ((>= resto 96) 'en-verde)
+        (t "error")
+    )
 )
 
-(timer 32332322)
+(princ (calTimer 3332432))
