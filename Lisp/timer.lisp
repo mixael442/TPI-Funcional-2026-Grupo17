@@ -2,7 +2,7 @@
   (let ((rValor 90)
         (vValor 120)
         (aValor 6))
-
+    (and (not (integerp tiempo)) "tiempo ingresado incorrecto")
     (calcular tiempo rValor vValor aValor)
    )
 )
@@ -20,4 +20,4 @@
     )
 )
 
-(princ (calTimer 3332432))
+(princ (calTimer "3332432"))
