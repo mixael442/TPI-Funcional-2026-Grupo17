@@ -6,7 +6,11 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 (defun duracion-ciclo (ciclo-seg)
-    (if (and (>= ciclo-seg 35)(<= ciclo-seg 150)) t nil )
+    (cond ((listp ciclo-seg) (error "El parametro debe ser solamente un dato (atomo)"))
+          ((not (numberp ciclo-seg)) (error "Tipo de dato incorrecto. Debe ser numérico"))
+          ((not (plusp ciclo-seg)) (error "El numero debe ser mayor o igual a 0 (positivo)")) ;tambien puede ser (< ciclo-seg 0) 
+          (t (if (and (>= ciclo-seg 35)(<= ciclo-seg 150)) t nil ))
+    ); fin cond
 );fin
 
 ;; ========================================================
@@ -21,6 +25,3 @@
           (t "Demasiado largo");                 ultima condicion si es mayor que el maximo (150seg)
     );fin COND
 );fin
-
-;;agregar validacion de datos (que sea un numero - el numero puede ser entero o float)
-;;mejorar la descripcion de cada funcion (que sea mas descriptivo)
