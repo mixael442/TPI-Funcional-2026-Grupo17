@@ -13,10 +13,12 @@
    (list timestamp estado-anterior estado-nuevo)
    historial))
 
-; FUNCION: mostrar-evento
-; NATURALEZA: Impura
-;DESCRIPCION:  Muestra un único evento por pantalla.
-;IMPACTO:no destructiva
+
+;FUNCION: mostrar-evento
+;NATURALEZA: Impura
+;DESCRIPCIÓN:
+;Muestra un único evento por pantalla.
+;IMPACTO: no destructiva
 (defun mostrar-evento (evento)
 
   (format t
@@ -25,11 +27,12 @@
           (cadr evento)
           (caddr evento)))
 
+
 ;FUNCION: mostrar-historial
-; NATURALEZA: Impura
-; Recorre recursivamente el historial
-; y muestra cada evento.
-;IMPACTO: nos destructiva
+;NATURALEZA: Impura
+;DESCRIPCIÓN:
+;Recorre recursivamente el historial y muestra cada evento.
+;IMPACTO: no destructiva
 (defun mostrar-historial (historial)
 
   (cond
@@ -40,51 +43,49 @@
      (mostrar-historial (cdr historial)))))
 
 
-;FUNCION: escribir-eventos
-;NATURALEZA: Impura
-;DESCRIPCIÓN: Escribe los eventos del historial en un stream.
+;FUNCION: evento-a-texto
+;NATURALEZA: Pura
+;DESCRIPCIÓN:
+;Convierte un evento en una cadena de texto.
 ;IMPACTO: no destructiva
-(defun escribir-eventos (historial stream)
+(defun evento-a-texto (evento)
+
+  (format nil
+          "Tiempo ~A: la luz ha cambiado de ~A a ~A~%"
+          (car evento)
+          (cadr evento)
+          (caddr evento)))
+
+
+;FUNCION: historial-a-texto
+;NATURALEZA: Pura
+;DESCRIPCIÓN:
+;Convierte todo el historial en una cadena de texto.
+;IMPACTO: no destructiva
+(defun historial-a-texto (historial)
 
   (cond
-    ((null historial) nil)
+    ((null historial) "")
 
     (t
-     (let ((evento (car historial)))
-
-       (format stream
-               "Tiempo ~A: la luz ha cambiado de ~A a ~A~%"
-               (car evento)
-               (cadr evento)
-               (caddr evento)))
-
-     (escribir-eventos
-      (cdr historial)
-      stream))))
-
+     (concatenate
+      'string
+      (evento-a-texto (car historial))
+      (historial-a-texto (cdr historial))))))
 
 
 ;FUNCION: informe
-;NATURALEZA: Impura
+;NATURALEZA: Pura
 ;DESCRIPCIÓN:
-;Genera un archivo con el historial de eventos.
-;IMPACTO: destructiva
+;Genera el informe completo como una cadena de texto.
+;IMPACTO: no destructiva
 (defun informe (historial)
 
-  (with-open-file
-      (stream
-       "informe-ejecucion-semaforo.txt"
-       :direction :output
-       :if-exists :supersede
-       :if-does-not-exist :create)
+  (concatenate
+   'string
+   "Informe de Ejecución del Sistema Semafórico
 
-    (format stream
-            "Informe de Ejecución del Sistema Semafórico~%~%")
-
-    (escribir-eventos
-     (reverse historial)
-     stream)
-
-    (format stream
-            "~%- Fin del Informe -~%")))
-  
+"
+   (historial-a-texto (reverse historial))
+   "
+- Fin del Informe -"))
