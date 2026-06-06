@@ -74,6 +74,25 @@
       (historial-a-texto (cdr historial))))))
 
 
+;FUNCION: guardar-informe
+;NATURALEZA: Impura
+;DESCRIPCIÓN:
+;Genera un archivo de texto con el informe de auditoría.
+;IMPACTO:  no destructiva
+(defun guardar-informe (historial)
+
+  (with-open-file
+      (archivo
+       "informe-ejecucion-semaforo.txt"
+       :direction :output
+       :if-exists :supersede
+       :if-does-not-exist :create)
+
+    (write-string
+     (informe historial)
+     archivo)))
+
+
 ;FUNCION: informe
 ;NATURALEZA: Pura
 ;DESCRIPCIÓN:
