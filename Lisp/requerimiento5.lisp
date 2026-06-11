@@ -6,15 +6,16 @@
 ;;;; ============================================================
 (load "funcionesAux.lisp")
 
-(defun cantidadCiclos (minutos)
+(defun cantidad-ciclos (minutos)
     (if (not (integerp minutos))
-      nil
+      "ingresar un numero entero"
 
       (floor (* minutos 60) 
-            (+ (cdr (obtenerColor :rojo)) 
-                (cdr (obtenerColor :verde)) 
-                (cdr (obtenerColor :amarillo))))
+            (+ (cdr (obtener-color :rojo)) 
+                (cdr (obtener-color :verde)) 
+                (cdr (obtener-color :amarillo))))
     )
 )
+
 
 

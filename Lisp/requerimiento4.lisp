@@ -8,7 +8,7 @@
 (load "funcionesAux.lisp")
 
 (defun duracion-ciclo ()
-      (+ (cdr (obtenerColor :rojo)) (cdr (obtenerColor :verde)) (cdr (obtenerColor :amarillo)))
+      (+ (cdr (obtener-color :rojo)) (cdr (obtener-color :verde)) (cdr (obtener-color :amarillo)))
       ;(+ rojo amarillo verde) --- esto configurando el config.json
 );fin 
 ;; ========================================================

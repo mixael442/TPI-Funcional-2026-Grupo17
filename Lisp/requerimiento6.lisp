@@ -1,8 +1,8 @@
 (load "funcionesAux.lisp")
-(defun porcentajeColor ()
-    (let* ((rojo (cdr (obtenerColor :rojo))) 
-           (verde (cdr (obtenerColor :verde)))
-           (amarillo (cdr (obtenerColor :amarillo)))
+(defun porcentaje-color ()
+    (let* ((rojo (cdr (obtener-color :rojo))) 
+           (verde (cdr (obtener-color :verde)))
+           (amarillo (cdr (obtener-color :amarillo)))
            (ciclo (+ rojo verde amarillo)))
     
         (list (cons 'rojo (float (* 100 (/ rojo ciclo)))) 
@@ -10,5 +10,3 @@
               (cons 'verde (float (* 100 (/ verde ciclo)))))
     )
 )
-
-(print (porcentajeColor))

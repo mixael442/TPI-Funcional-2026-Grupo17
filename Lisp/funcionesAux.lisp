@@ -6,12 +6,12 @@
 (load "~/quicklisp/setup.lisp")
 (ql:quickload :cl-json)
 
-(defun leerConfig ()
+(defun leer-config ()
   (with-open-file (archivo "config.json"
                      :direction :input)
     (json:decode-json archivo)))
 
-(defun obtenerColor (clave)
+(defun obtener-color (clave)
   (ASSOC clave (leerConfig))
 )
 
