@@ -1,16 +1,20 @@
 ;;;; ============================================================
 ;;;; REQUERIMIENTO 5: PLANIFICACIÓN TEMPORAL
-;;;; FUNCIÓN: ciclos-por-tiempo
+;;;; FUNCIÓN: cantidad-ciclos
 ;;;; Entrada: minutos
 ;;;; Salida: número de ciclos completos en ese período
 ;;;; ============================================================
+(load "funcionesAux.lisp")
 
-(defun ciclos-por-tiempo (minutos)
-  (let ((duracion-ciclo 216)   ; 90 + 6 + 120 segundos
-        (segundos-totales (* minutos 60)))
-    (floor segundos-totales duracion-ciclo)))
+(defun cantidadCiclos (minutos)
+    (if (not (integerp minutos))
+      nil
 
-(format t "~a~%" (ciclos-por-tiempo 15))
-(format t "~a~%" (ciclos-por-tiempo 60))
-(format t "~a~%" (ciclos-por-tiempo 3))
-(format t "~a~%" (ciclos-por-tiempo 1))
+      (floor (* minutos 60) 
+            (+ (cdr (obtenerColor :rojo)) 
+                (cdr (obtenerColor :verde)) 
+                (cdr (obtenerColor :amarillo))))
+    )
+)
+
+
