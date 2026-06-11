@@ -5,8 +5,10 @@
 ;; ESTRATEGIA: Operacion aritmética (suma)
 ;; IMPACTO: No destructiva 
 ;; ========================================================
+(load "funcionesAux.lisp")
+
 (defun duracion-ciclo ()
-      (+ 90 6 120)
+      (+ (cdr (obtenerColor :rojo)) (cdr (obtenerColor :verde)) (cdr (obtenerColor :amarillo)))
       ;(+ rojo amarillo verde) --- esto configurando el config.json
 );fin 
 ;; ========================================================

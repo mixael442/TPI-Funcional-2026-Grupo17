@@ -1,22 +1,26 @@
+(load "funcionesAux.lisp")
+
 (defun calTimer (tiempo)
-  (let ((rValor 90)
-        (vValor 120)
-        (aValor 6))
+  (let ((rValor (cdr (obtenerColor :rojo)))
+        (vValor (cdr (obtenerColor :verde)))
+        (aValor (cdr (obtenerColor :amarillo))))
     (and (not (integerp tiempo)) "tiempo ingresado incorrecto")
     (calcularRem tiempo rValor vValor aValor)
    )
 )
 
 (defun calcularRem (tiempo rojo verde amarillo)
-    (compararRem (rem tiempo (+ rojo verde amarillo)))
+    (compararRem (rem tiempo (+ rojo verde amarillo)) rojo verde amarillo)
 )
 
-(defun compararRem(resto) 
+(defun compararRem(resto rojo verde amarillo) 
     (cond
-        ((< resto 90) 'en-rojo)
-        ((< resto 96) 'en-amarillo)
-        ((>= resto 96) 'en-verde)
+        ((< resto rojo) 'en-rojo)
+        ((< resto (+ amarillo rojo)) 'en-amarillo)
+        ((>= resto (+ amarillo rojo)) 'en-verde)
         (t "error")
     )
 )
+
+
 
