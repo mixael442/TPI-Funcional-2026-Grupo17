@@ -9,10 +9,10 @@
 
 (defun duracion()
 
-  (let ((rojo (cdr (obtenerColor :rojo)))
-        (verde (cdr (obtenerColor :verde)))
-        (amarillo (cdr (obtenerColor :amarillo)))
-        (intermitente (cdr (obtenerColor :intermitente))))
+  (let ((rojo (cdr (obtener-color :rojo)))
+        (verde (cdr (obtener-color :verde)))
+        (amarillo (cdr (obtener-color :amarillo)))
+        (intermitente (cdr (obtener-color :intermitente))))
 
     (+ rojo
        intermitente
@@ -20,7 +20,7 @@
        intermitente
        amarillo
        intermitente)))
-);fin 
+;fin 
 ;; ========================================================
 ;; FUNCIÓN: recomendacion-ciclo 
 ;; NATURALEZA: Pura (misma entrada, misma salida)

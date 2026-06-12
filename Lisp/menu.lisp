@@ -1,4 +1,7 @@
 ; MENU PRINCIPAL
+(load "requerimiento2.lisp")
+(load "requerimiento4.lisp")
+(load "requerimiento5.lisp")
 
 (defun mostrar-menu ()
 
@@ -12,6 +15,7 @@
   (format t "6 - Ciclos por tiempo~%")
   (format t "0 - Salir~%")
   (format t "Seleccione una opcion: ")
+  (terpri)
   (read))
 
 (defun ejecutar-menu ()
@@ -34,7 +38,7 @@
        (format t "~%Tiempo Unix: ")
        (let ((tiempo (read)))
          (format t "~A~%"
-                 (calTimer tiempo)))
+                 (calcular-timer tiempo)))
        (ejecutar-menu))
 ; REQ 3
       ((= opcion 3)
@@ -45,15 +49,18 @@
 ; REQ 4
       ((= opcion 4)
        (format t "~%Duracion ciclo: ~A segundos~%"
-               (duracion-ciclo))
+               (recomendacion-ciclo (duracion)))
+       (format t "~%Presione ENTER para continuar...")
+       (read-line)
        (ejecutar-menu))
- ;REQ 4b
+ ;REQ 5
       ((= opcion 5)
-       (format t "~%~A~%"
-               (recomendacion-ciclo
-                (duracion-ciclo)))
+       (format t "~%ingrese minuto")
+       (let ((minuto (read)))
+        (format t "~%~A~%"
+                  (cantidad-ciclos minuto)))
        (ejecutar-menu))
-; REQ 5
+; REQ 6
       ((= opcion 6)
        (format t "~%Minutos: ")
        (let ((minutos (read)))
@@ -64,3 +71,5 @@
       (t
        (format t "~%Opcion invalida~%")
        (ejecutar-menu)))))
+
+(ejecutar-menu)

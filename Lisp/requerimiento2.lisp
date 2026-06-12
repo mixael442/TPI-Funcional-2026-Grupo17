@@ -5,10 +5,10 @@
 
       "tiempo ingresado incorrecto"
 
-      (let ((rValor (cdr (obtenerColor :rojo)))
-            (vValor (cdr (obtenerColor :verde)))
-            (aValor (cdr (obtenerColor :amarillo)))
-            (iValor (cdr (obtenerColor :intermitente))))
+      (let ((rValor (cdr (obtener-color :rojo)))
+            (vValor (cdr (obtener-color :verde)))
+            (aValor (cdr (obtener-color :amarillo)))
+            (iValor (cdr (obtener-color :intermitente))))
 
         (calcular-rem
          tiempo

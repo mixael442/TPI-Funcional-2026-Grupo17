@@ -12,6 +12,6 @@
     (json:decode-json archivo)))
 
 (defun obtener-color (clave)
-  (ASSOC clave (leerConfig))
+  (ASSOC clave (leer-config))
 )
 

@@ -15,9 +15,9 @@
       (floor
        (* minutos 60)
 
-       (+ (cdr (obtenerColor :rojo))
-          (cdr (obtenerColor :verde))
-          (cdr (obtenerColor :amarillo))
-          (* 3 (cdr (obtenerColor :intermitente)))))))
+       (+ (cdr (obtener-color :rojo))
+          (cdr (obtener-color :verde))
+          (cdr (obtener-color :amarillo))
+          (* 3 (cdr (obtener-color :intermitente)))))))
 
 
