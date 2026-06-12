@@ -7,9 +7,19 @@
 ;; ========================================================
 (load "funcionesAux.lisp")
 
-(defun duracion-ciclo ()
-      (+ (cdr (obtener-color :rojo)) (cdr (obtener-color :verde)) (cdr (obtener-color :amarillo)))
-      ;(+ rojo amarillo verde) --- esto configurando el config.json
+(defun duracion()
+
+  (let ((rojo (cdr (obtenerColor :rojo)))
+        (verde (cdr (obtenerColor :verde)))
+        (amarillo (cdr (obtenerColor :amarillo)))
+        (intermitente (cdr (obtenerColor :intermitente))))
+
+    (+ rojo
+       intermitente
+       verde
+       intermitente
+       amarillo
+       intermitente)))
 );fin 
 ;; ========================================================
 ;; FUNCIÓN: recomendacion-ciclo 
