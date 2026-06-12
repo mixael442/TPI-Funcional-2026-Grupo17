@@ -2,6 +2,7 @@
 (load "requerimiento2.lisp")
 (load "requerimiento4.lisp")
 (load "requerimiento5.lisp")
+(load "requerimiento6.lisp")
 
 (defun mostrar-menu ()
 
@@ -55,21 +56,22 @@
        (ejecutar-menu))
  ;REQ 5
       ((= opcion 5)
-       (format t "~%ingrese minuto")
+       (format t "~%Minutos")
        (let ((minuto (read)))
         (format t "~%~A~%"
                   (cantidad-ciclos minuto)))
        (ejecutar-menu))
 ; REQ 6
       ((= opcion 6)
-       (format t "~%Minutos: ")
-       (let ((minutos (read)))
-         (format t "~A~%"
-                 (ciclos-por-tiempo minutos)))
+       (format t "~%Porcentajes de cada color: ~A~%" (porcentaje-color))
+       (format t "~%Presione ENTER para continuar...")
+       (read-line)
        (ejecutar-menu))
       ;; ERROR
       (t
        (format t "~%Opcion invalida~%")
-       (ejecutar-menu)))))
-
+       (ejecutar-menu))
+    )
+  )
+)
 (ejecutar-menu)
