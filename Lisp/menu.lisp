@@ -49,7 +49,8 @@
        (ejecutar-menu))
 ; REQ 4
       ((= opcion 4)
-       (format t "~%Duracion ciclo: ~A segundos~%"
+       (format t "~%Duracion ciclo: ~A segundos~%~A~%"
+               (duracion)
                (recomendacion-ciclo (duracion)))
        (format t "~%Presione ENTER para continuar...")
        (read-line)
