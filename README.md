@@ -22,4 +22,24 @@
     ((eq cambiar-a 'verde)
      (list color-actual "cambiar-a-verde"))agregar desciprcion
 
+"caso valido "
+(transicion 'en-rojo 'verde)
+(or (eq 'en-rojo 'en-rojo)
+    (eq 'en-rojo 'en-amarillo)
+    (eq 'en-rojo 'en-verde))
+    (or T NIL NIL)
+      (T
+      (not T)
+      (NIL) "si condicion NO se cumple,sigue evaluando"
+
+      "Caso invalido"
+      (transicion 'azul 'verde)
+      (or (eq 'azul 'en-rojo)
+    (eq 'azul 'en-amarillo)
+    (eq 'azul 'en-verde))
+      (or NIL NIL NIL)
+      (NIL)
+      (not NIL)T)
+      (list 'error "color-actual-invalido")
+      (ERROR "color-actual-invalido")
 
