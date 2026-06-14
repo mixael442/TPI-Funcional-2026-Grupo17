@@ -13,15 +13,36 @@
   (cdr (ASSOC clave (leer-config)));par que no devuelva el par, y ahorro una banda de cdrs jsjs
 )
 
-
-
-;TRANSICION: Requerimiento 1
-
+; ========================================================
+;REQUERIMIENTO 1
+; ========================================================
+; FUNCIÓN: transicion
+; NATURALEZA: Pura
+; DESCRIPCIÓN: Simula el cambio de estado de un semáforo. 
+;              Valida que el color actual y el color destino sean válidos. 
+;              Si alguno es incorrecto, devuelve un mensaje de error.
+; IMPACTO: No destructiva
+; ========================================================
 
 (defun transicion (color-actual cambiar-a)
+
   (cond
-    ((eq cambiar-a 'rojo);compara si dos simbolos son el mismo 
-     (list color-actual "cambiar-a-rojo"));contruye la lista 
+    ;; Validación del estado actual
+    ((not (or (eq color-actual 'en-rojo)
+              (eq color-actual 'en-amarillo)
+              (eq color-actual 'en-verde)))
+
+     (list 'error "color-actual-invalido"))
+
+    ;; Validación del estado destino
+    ((not (or (eq cambiar-a 'rojo)
+              (eq cambiar-a 'amarillo)
+              (eq cambiar-a 'verde)))
+
+     (list 'error "color-destino-invalido"))
+    ;; Transiciones válidas
+    ((eq cambiar-a 'rojo)
+     (list color-actual "cambiar-a-rojo"))
 
     ((eq cambiar-a 'amarillo)
      (list color-actual "cambiar-a-amarillo"))
@@ -30,11 +51,9 @@
      (list color-actual "cambiar-a-verde"))
 
     (t
-     (list color-actual 'accion-por-defecto))))
+     (list 'error "transicion-no-valida"))))
 
-
-
-
+; ========================================================
 ;TIMER - REQUERIMIENTO 2
 
 (defun calcular-timer (tiempo)
@@ -192,8 +211,6 @@
      archivo)))
 
 
-
-
 ;FUNCION: informe
 ;NATURALEZA: Pura
 ;DESCRIPCIÓN:
@@ -210,14 +227,14 @@
    "
 - Fin del Informe -"))
 
-
+;; ========================================================
+;; REQUERIMIENTO 4
 ;; ========================================================
 ;; FUNCIÓN: duracion
 ;; NATURALEZA: Pura (no produce efectos secundarios)
 ;; ESTRATEGIA: Operacion aritmética (suma)
 ;; IMPACTO: No destructiva 
 ;; ========================================================
-
 
 (defun duracion()
 
@@ -231,8 +248,7 @@
        verde
        intermitente
        amarillo
-       intermitente)))
-;fin 
+       intermitente)));fin 
 ;; ========================================================
 ;; FUNCIÓN: recomendacion-ciclo 
 ;; NATURALEZA: Pura (misma entrada, misma salida)
@@ -242,12 +258,10 @@
 (defun recomendacion-ciclo (duracion)
       (cond ((> duracion 150) "Ciclo demasiado largo")
             ((< duracion 35) "Ciclo demasiado corto")
-            (t "Ciclo optimo")
-      )
+            (t "Ciclo optimo"))
 );fin
 
-
-;requerimiento 5
+;; ========================================================
 ;;;; REQUERIMIENTO 5: PLANIFICACIÓN TEMPORAL
 ;;;; FUNCIÓN: cantidad-ciclos
 ;;;; Entrada: minutos
