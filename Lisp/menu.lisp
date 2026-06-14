@@ -27,9 +27,9 @@
        (format t "~%Finalizando programa...~%"))
 ; REQ 1
       ((= opcion 1)
-       (format t "~%Color actual: ")
+       (format t "~%Color actual: ")(finish-output)
        (let ((actual (read)))
-         (format t "Cambiar a: ")
+         (format t "Cambiar a: ")(finish-output)
          (let ((nuevo (read)))
            (format t "~A~%"
                    (transicion actual nuevo))))
@@ -57,9 +57,10 @@
        (ejecutar-menu))
  ;REQ 5
       ((= opcion 5)
-       (format t "~%Minutos")
+       (format t "~%Minutos: ")
        (let ((minuto (read)))
-        (format t "~%~A~%"
+        (format t "~%Cantidad de ciclos en ~A minutos: ~A~%"
+                   minuto
                   (cantidad-ciclos minuto)))
        (ejecutar-menu))
 ; REQ 6
