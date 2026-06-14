@@ -256,9 +256,13 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 (defun recomendacion-ciclo (duracion)
-      (cond ((> duracion 150) "Ciclo demasiado largo")
-            ((< duracion 35) "Ciclo demasiado corto")
-            (t "Ciclo optimo"))
+    (cond ((not (numberp duracion)) (error "Tipo de dato incorrecto. Debe ser numérico"))
+          ((not (plusp duracion)) (error "El numero debe ser mayor o igual a 0 (positivo)")) ;tambien puede ser (< ciclo-seg 0) 
+          (t 
+             (cond ((> duracion 150) "Ciclo demasiado largo")
+                   ((< duracion 35) "Ciclo demasiado corto")
+                   (t "Ciclo optimo")
+             )));fin cond
 );fin
 
 ;; ========================================================
